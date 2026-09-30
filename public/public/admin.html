@@ -1,1 +1,417 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>پنل مدیریت | CODM SHOP</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page">
+
+  <!-- Login -->
+  <section id="loginBox" class="admin-login">
+
+    <div class="login-card">
+
+      <div class="admin-icon">
+        🔐
+      </div>
+
+      <h1>پنل مدیریت</h1>
+
+      <p>
+        برای ورود اطلاعات مدیر را وارد کنید.
+      </p>
+
+      <form id="loginForm">
+
+        <div class="form-group">
+
+          <label for="username">
+            نام کاربری
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="نام کاربری"
+            autocomplete="username"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="password">
+            رمز عبور
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="رمز عبور"
+            autocomplete="current-password"
+            required
+          >
+
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          ورود به پنل
+        </button>
+
+      </form>
+
+      <a href="index.html" class="back-link">
+        ← بازگشت به فروشگاه
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Admin Panel -->
+  <section
+    id="adminPanel"
+    class="admin-panel"
+    style="display:none;"
+  >
+
+    <!-- Header -->
+    <header class="admin-header">
+
+      <div>
+
+        <span class="admin-label">
+          ADMIN PANEL
+        </span>
+
+        <h1>
+          🎮 مدیریت CODM SHOP
+        </h1>
+
+      </div>
+
+      <div class="admin-header-actions">
+
+        <a
+          href="index.html"
+          class="header-button"
+        >
+          مشاهده سایت
+        </a>
+
+        <button
+          id="logoutBtn"
+          class="header-button logout"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="admin-container">
+
+
+      <!-- Message -->
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+
+      <!-- Add Account -->
+      <section class="admin-card">
+
+        <div class="card-title">
+
+          <div>
+            <span>➕</span>
+
+            <div>
+              <h2>
+                افزودن اکانت
+              </h2>
+
+              <p>
+                یک اکانت جدید برای فروش اضافه کنید.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+
+        <form id="accountForm">
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="accountTitle">
+                عنوان اکانت
+              </label>
+
+              <input
+                type="text"
+                id="accountTitle"
+                placeholder="مثلاً اکانت Legendary"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="accountPrice">
+                قیمت
+              </label>
+
+              <input
+                type="number"
+                id="accountPrice"
+                placeholder="مثلاً 2500000"
+                min="0"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="accountDescription">
+              توضیحات
+            </label>
+
+            <textarea
+              id="accountDescription"
+              rows="4"
+              placeholder="توضیحات اکانت..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="accountImage">
+              لینک تصویر
+            </label>
+
+            <input
+              type="url"
+              id="accountImage"
+              placeholder="https://example.com/image.jpg"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="accountStatus">
+              وضعیت
+            </label>
+
+            <select id="accountStatus">
+
+              <option value="available">
+                موجود
+              </option>
+
+              <option value="sold">
+                فروخته شده
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+            ➕ افزودن اکانت
+          </button>
+
+        </form>
+
+      </section>
+
+
+      <!-- Accounts -->
+      <section class="admin-card">
+
+        <div class="card-title">
+
+          <div>
+
+            <span>🎮</span>
+
+            <div>
+
+              <h2>
+                مدیریت اکانت‌ها
+              </h2>
+
+              <p>
+                اکانت‌های فروشگاه را ویرایش یا حذف کنید.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="accountsList"
+          class="admin-accounts-list"
+        >
+
+          <div class="loading">
+            در حال دریافت اطلاعات...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Users -->
+      <section class="admin-card">
+
+        <div class="card-title">
+
+          <div>
+
+            <span>👥</span>
+
+            <div>
+
+              <h2>
+                کاربران ثبت‌شده
+              </h2>
+
+              <p>
+                اطلاعات افرادی که درخواست خرید ثبت کرده‌اند.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="usersList"
+          class="users-list"
+        >
+
+          <div class="loading">
+            در حال دریافت کاربران...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Settings -->
+      <section class="admin-card">
+
+        <div class="card-title">
+
+          <div>
+
+            <span>⚙️</span>
+
+            <div>
+
+              <h2>
+                تنظیمات سایت
+              </h2>
+
+              <p>
+                نام و پس‌زمینه فروشگاه را تغییر دهید.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <form id="settingsForm">
+
+          <div class="form-group">
+
+            <label for="siteName">
+              نام سایت
+            </label>
+
+            <input
+              type="text"
+              id="siteName"
+              placeholder="CODM SHOP"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="siteBackground">
+              لینک تصویر پس‌زمینه
+            </label>
+
+            <input
+              type="url"
+              id="siteBackground"
+              placeholder="https://example.com/background.jpg"
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+            💾 ذخیره تنظیمات
+          </button>
+
+        </form>
+
+      </section>
+
+
+    </main>
+
+  </section>
+
+
+  <script src="admin.js"></script>
+
+</body>
+  </html>
